@@ -1,0 +1,263 @@
+/* ==========================================================
+   Estilo "Taller de cuero": verde botella, cuero y hueso.
+   Funciona con index.html, registro.html e inicio.html
+   sin cambiar el HTML.
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Zilla+Slab:wght@500;700&display=swap");
+
+:root {
+  --fondo: #14211c;        /* verde botella oscuro */
+  --superficie: #1d2f28;   /* panel */
+  --superficie-2: #243a31; /* campos */
+  --cuero: #c18a4a;        /* acento principal */
+  --cuero-oscuro: #8f5f2c;
+  --hueso: #ece5d3;        /* texto */
+  --niebla: #9fb0a6;       /* texto secundario */
+  --alerta: #e7926f;       /* errores */
+  --ok: #8fc29a;
+
+  --titulos: "Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --texto: "Barlow", "Segoe UI", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 2.5rem 1rem 4rem;
+  font-family: var(--texto);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--hueso);
+  background:
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 255, 255, 0.015) 14px 15px),
+    var(--fondo);
+}
+
+h1,
+h2 {
+  font-family: var(--titulos);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.5rem; color: var(--cuero); }
+
+/* ---------- Tarjeta principal (login, registro, bienvenida) ---------- */
+
+.contenedor {
+  position: relative;
+  width: min(100%, 26rem);
+  margin: 4vh auto 2rem;
+  padding: 2.5rem 2rem 2rem;
+  background: var(--superficie);
+  border-radius: 6px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* La costura de cuero: la firma de este diseño */
+.contenedor::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1.5px dashed var(--cuero-oscuro);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.contenedor > * {
+  position: relative;
+}
+
+/* ---------- Formularios de acceso ---------- */
+
+.contenedor form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 1.5rem 0;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+  color: var(--hueso);
+  background: var(--superficie-2);
+  border: 1px solid transparent;
+  border-bottom: 2px solid var(--cuero-oscuro);
+  border-radius: 3px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+input::placeholder {
+  color: var(--niebla);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  background: #2a443a;
+  border-bottom-color: var(--cuero);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cuero);
+  outline-offset: 2px;
+}
+
+input.error { border-bottom-color: var(--alerta); }
+input.ok { border-bottom-color: var(--ok); }
+
+select option {
+  background: var(--superficie);
+  color: var(--hueso);
+}
+
+/* Mensajes de error (los <small> de registro.html) */
+small {
+  display: block;
+  margin-top: -0.5rem;
+  font-size: 0.88rem;
+  color: var(--alerta);
+}
+
+small:empty {
+  display: none;
+}
+
+/* ---------- Botones ---------- */
+
+button {
+  padding: 0.8rem 1.2rem;
+  font: inherit;
+  font-weight: 600;
+  color: #1b1208;
+  background: var(--cuero);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--cuero-oscuro);
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--cuero-oscuro);
+}
+
+button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--cuero-oscuro);
+}
+
+#cerrarSesion {
+  color: var(--hueso);
+  background: transparent;
+  border: 1px solid var(--niebla);
+  box-shadow: none;
+}
+
+#cerrarSesion:hover {
+  border-color: var(--cuero);
+  color: var(--cuero);
+  transform: none;
+  box-shadow: none;
+}
+
+/* ---------- Enlaces ---------- */
+
+p {
+  margin: 0 0 0.75rem;
+  color: var(--niebla);
+}
+
+a {
+  color: var(--cuero);
+  font-weight: 600;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--hueso);
+}
+
+/* ---------- Registro de compras (inicio.html) ---------- */
+
+body > section {
+  width: min(100%, 52rem);
+  margin: 0 auto 2rem;
+  padding: 2rem;
+  background: var(--superficie);
+  border-radius: 6px;
+  border-top: 4px solid var(--cuero);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+body > section form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.25rem;
+  margin-bottom: 2rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--niebla);
+}
+
+/* El botón de guardar ocupa todo el ancho */
+body > section form button {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+/* Lista de compras: filas tipo libro de cuentas */
+#registros {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+#registros p {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  color: var(--hueso);
+  background: var(--superficie-2);
+  border-left: 4px solid var(--cuero);
+  border-radius: 0 3px 3px 0;
+}
+
+#bienvenida {
+  color: var(--hueso);
+  font-weight: 500;
+}
+
+/* ---------- Móvil ---------- */
+
+@media (max-width: 640px) {
+  body { padding-top: 1.25rem; }
+  .contenedor { padding: 2rem 1.25rem 1.5rem; }
+  body > section { padding: 1.25rem; }
+  body > section form { grid-template-columns: 1fr; }
+  h1 { font-size: 1.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
